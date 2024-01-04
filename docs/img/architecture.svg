@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 668" width="880" height="668" role="img" aria-label="Vouch architecture. A publisher signs a manifest once. Content addressed storage feeds three untrusted mirrors. Mirror B serves altered bytes, its seam does not match, and it is dropped. The consumer verifies locally from the remaining mirrors and materializes the artifact.">
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#0d1523" stroke-width="1"/>
+  </pattern>
+  <radialGradient id="vig" cx="50%" cy="42%" r="78%">
+    <stop offset="0" stop-color="#0a1220"/><stop offset="1" stop-color="#04060b"/>
+  </radialGradient>
+  <filter id="glow" x="-120%" y="-120%" width="340%" height="340%">
+    <feGaussianBlur stdDeviation="2.2" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <g id="nofit" fill="none" stroke-width="1.4">
+    <path d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/>
+    <path transform="translate(5,0)" d="M7,0 L10,3.5 L6,7 L10,10.5 L7,14 H12 V0 Z"/>
+  </g>
+</defs>
+<style>
+  text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .box{fill:#080e18;stroke:#1c2b40;stroke-width:1}
+  .ttl{fill:#dbe5f0;font-size:12px;letter-spacing:2.4px}
+  .sub{fill:#5b6b80;font-size:8.5px;letter-spacing:1.4px}
+  .eyebrow{fill:#22d3ee;font-size:8.5px;letter-spacing:3px}
+  .zone{fill:none;stroke:#ff7a18;stroke-width:1.2;stroke-dasharray:3 5;opacity:.75}
+  .rail{stroke:#16233a;stroke-width:1;fill:none}
+
+  .flow{stroke:#22d3ee;stroke-width:1.8;fill:none;stroke-linecap:round;filter:url(#glow);
+        stroke-dasharray:14 100;stroke-dashoffset:-100;
+        animation:flow 8s linear infinite;animation-delay:var(--d,0s)}
+  .flow.bad{stroke:#ff3b1f}
+  @keyframes flow{0%{stroke-dashoffset:14}10%{stroke-dashoffset:-100}100%{stroke-dashoffset:-100}}
+
+  .badmark{opacity:0;animation:pop 8s linear infinite;animation-delay:3.1s}
+  @keyframes pop{0%{opacity:0}4%{opacity:1}70%{opacity:1}76%{opacity:0}100%{opacity:0}}
+  .badbox{animation:badbox 8s linear infinite;animation-delay:2.9s}
+  @keyframes badbox{0%{stroke:#1c2b40}4%{stroke:#ff3b1f}70%{stroke:#ff3b1f}76%{stroke:#1c2b40}100%{stroke:#1c2b40}}
+
+  .tile path{fill:none;stroke:#243447;stroke-width:1.3;animation-delay:var(--d,0s)}
+  .tile .lh{animation:seaml 8s linear infinite}
+  .tile .rh{animation:seamr 8s linear infinite}
+  @keyframes seaml{0%{stroke:#243447}3%{stroke:#22d3ee}42%{stroke:#22d3ee}48%{stroke:#243447}100%{stroke:#243447}}
+  @keyframes seamr{0%{stroke:#243447;transform:translateX(5px)}3%{stroke:#22d3ee;transform:translateX(0)}42%{stroke:#22d3ee;transform:translateX(0)}48%{stroke:#243447;transform:translateX(5px)}100%{stroke:#243447;transform:translateX(5px)}}
+  .vt{fill:#3f556e;font-size:7.5px;letter-spacing:.5px;animation:vtl 8s linear infinite;animation-delay:var(--d,0s)}
+  @keyframes vtl{0%{fill:#3f556e}3%{fill:#22d3ee}42%{fill:#22d3ee}48%{fill:#3f556e}100%{fill:#3f556e}}
+
+  .fin{animation:fin 8s linear infinite;animation-delay:5.9s}
+  @keyframes fin{0%{stroke:#1c2b40;fill:#080e18}5%{stroke:#22d3ee;fill:#07141c}60%{stroke:#22d3ee;fill:#07141c}70%{stroke:#1c2b40;fill:#080e18}100%{stroke:#1c2b40;fill:#080e18}}
+
+  @media (prefers-reduced-motion:reduce){
+    .flow{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
+    .badmark{animation:none;opacity:1}
+    .badbox{animation:none;stroke:#ff3b1f}
+    .tile .lh,.tile .rh{animation:none;stroke:#22d3ee;transform:none}
+    .vt{animation:none;fill:#22d3ee}
+    .fin{animation:none;stroke:#22d3ee;fill:#07141c}
+  }
+</style>
+
+<rect width="880" height="668" fill="url(#vig)"/>
+<rect width="880" height="668" fill="url(#grid)"/>
+
+<text class="eyebrow" x="40" y="34">SIGN ONCE  ·  CARRY ANYWHERE  ·  VERIFY EVERY BYTE</text>
+
+<rect class="box" x="350" y="56" width="180" height="42"/>
+<text class="ttl" x="440" y="76" text-anchor="middle">PUBLISHER</text>
+<text class="sub" x="440" y="89" text-anchor="middle">OFFLINE ROOT KEY</text>
+
+<path class="rail" d="M440,98 V124"/>
+<path class="flow" style="--d:0s" pathLength="100" d="M440,98 V124"/>
+
+<rect class="box" x="320" y="124" width="240" height="42"/>
+<text class="ttl" x="440" y="144" text-anchor="middle">SIGN MANIFEST</text>
+<text class="sub" x="440" y="157" text-anchor="middle">DSSE ENVELOPE  ·  ONE SIGNATURE</text>
+
+<path class="rail" d="M440,166 V192"/>
+<path class="flow" style="--d:.7s" pathLength="100" d="M440,166 V192"/>
+
+<rect class="box" x="250" y="192" width="380" height="42"/>
+<text class="ttl" x="440" y="212" text-anchor="middle">CONTENT ADDRESSED STORAGE</text>
+<text class="sub" x="440" y="225" text-anchor="middle">EVERY CHUNK NAMED BY ITS OWN BLAKE3 DIGEST</text>
+
+<path class="rail" d="M440,234 V254 Q440,264 430,264 H240 Q230,264 230,274 V300"/>
+<path class="rail" d="M440,234 V300"/>
+<path class="rail" d="M440,234 V254 Q440,264 450,264 H640 Q650,264 650,274 V300"/>
+<path class="flow" style="--d:1.4s" pathLength="100" d="M440,234 V254 Q440,264 430,264 H240 Q230,264 230,274 V300"/>
+<path class="flow" style="--d:1.4s" pathLength="100" d="M440,234 V300"/>
+<path class="flow" style="--d:1.4s" pathLength="100" d="M440,234 V254 Q440,264 450,264 H640 Q650,264 650,274 V300"/>
+
+<rect class="zone" x="130" y="284" width="620" height="76"/>
+<text class="sub" x="140" y="298" style="fill:#ff7a18;opacity:.85">UNTRUSTED  ·  NEVER A TRUST ANCHOR</text>
+
+<rect class="box" x="150" y="308" width="160" height="38"/>
+<text class="ttl" x="230" y="332" text-anchor="middle" style="font-size:11px">MIRROR A</text>
+
+<rect class="box badbox" x="360" y="308" width="160" height="38"/>
+<text class="ttl" x="440" y="332" text-anchor="middle" style="font-size:11px">MIRROR B</text>
+<g class="badmark">
+  <rect x="360" y="308" width="160" height="38" fill="#ff3b1f" opacity=".09"/>
+  <text x="512" y="322" text-anchor="end" font-size="8" fill="#ff3b1f" letter-spacing="1.2px">ALTERED</text>
+</g>
+
+<rect class="box" x="570" y="308" width="160" height="38"/>
+<text class="ttl" x="650" y="332" text-anchor="middle" style="font-size:11px">MIRROR C</text>
+
+<path class="rail" d="M230,346 V382 Q230,392 240,392 H430 Q440,392 440,402 V428"/>
+<path class="rail" d="M440,346 V428"/>
+<path class="rail" d="M650,346 V382 Q650,392 640,392 H450 Q440,392 440,402 V428"/>
+<path class="flow" style="--d:2.6s" pathLength="100" d="M230,346 V382 Q230,392 240,392 H430 Q440,392 440,402 V428"/>
+<path class="flow bad" style="--d:2.6s" pathLength="100" d="M440,346 V428"/>
+<path class="flow" style="--d:2.6s" pathLength="100" d="M650,346 V382 Q650,392 640,392 H450 Q440,392 440,402 V428"/>
+
+<g class="badmark">
+  <use href="#nofit" xlink:href="#nofit" x="466" y="373" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text x="502" y="384" font-size="8.5" fill="#ff3b1f" letter-spacing="1.4px">SEAM DOES NOT MATCH  ·  DROPPED</text>
+</g>
+
+<rect class="box" x="350" y="428" width="180" height="42"/>
+<text class="ttl" x="440" y="448" text-anchor="middle">CONSUMER</text>
+<text class="sub" x="440" y="461" text-anchor="middle">TRUSTS ONLY THE ROOT</text>
+
+<path class="rail" d="M440,470 V502"/>
+
+<text class="sub" x="40" y="506" style="fill:#3f556e">LOCAL VERIFICATION  ·  NO NETWORK TRUST</text>
+<line class="rail" x1="169" y1="529" x2="712" y2="529"/>
+
+<g class="tile" style="--d:3.60s" transform="translate(169,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:3.60s" x="175" y="556" text-anchor="middle">V1</text>
+<g class="tile" style="--d:3.72s" transform="translate(229,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:3.72s" x="235" y="556" text-anchor="middle">V2</text>
+<g class="tile" style="--d:3.84s" transform="translate(289,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:3.84s" x="295" y="556" text-anchor="middle">V3</text>
+<g class="tile" style="--d:3.96s" transform="translate(349,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:3.96s" x="355" y="556" text-anchor="middle">V4</text>
+<g class="tile" style="--d:4.08s" transform="translate(409,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.08s" x="415" y="556" text-anchor="middle">V5</text>
+<g class="tile" style="--d:4.20s" transform="translate(469,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.20s" x="475" y="556" text-anchor="middle">V6</text>
+<g class="tile" style="--d:4.32s" transform="translate(529,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.32s" x="535" y="556" text-anchor="middle">V7</text>
+<g class="tile" style="--d:4.44s" transform="translate(589,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.44s" x="595" y="556" text-anchor="middle">V8</text>
+<g class="tile" style="--d:4.56s" transform="translate(649,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.56s" x="655" y="556" text-anchor="middle">V9</text>
+<g class="tile" style="--d:4.68s" transform="translate(709,522)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vt" style="--d:4.68s" x="715" y="556" text-anchor="middle">V10</text>
+
+<path class="rail" d="M440,562 V590"/>
+
+<rect class="box fin" x="340" y="590" width="200" height="42"/>
+<text class="ttl" x="440" y="610" text-anchor="middle">MATERIALIZE</text>
+<text class="sub" x="440" y="623" text-anchor="middle">EXACTLY THE SIGNED BYTES</text>
+
+<text class="sub" x="840" y="656" text-anchor="end" style="fill:#33465e">A MIRROR CAN DENY AVAILABILITY. IT CANNOT FORGE AUTHENTICITY.</text>
+</svg>

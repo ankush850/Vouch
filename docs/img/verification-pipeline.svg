@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 648" width="880" height="648" role="img" aria-label="Verification pipeline. Ten gates run in order: pin, root chain, revocations, timestamp, snapshot, manifest, transparency, chunk digests, assembly, provenance. Each gate closes a tile seam. All must close before the artifact is materialized. Any failure stops the fetch.">
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#0d1523" stroke-width="1"/>
+  </pattern>
+  <radialGradient id="vig" cx="35%" cy="45%" r="90%">
+    <stop offset="0" stop-color="#0a1220"/><stop offset="1" stop-color="#04060b"/>
+  </radialGradient>
+  <filter id="glow" x="-120%" y="-120%" width="340%" height="340%">
+    <feGaussianBlur stdDeviation="2" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<style>
+  text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .eyebrow{fill:#22d3ee;font-size:8.5px;letter-spacing:3.2px}
+  .vn{fill:#3f556e;font-size:8.5px;letter-spacing:1.2px}
+  .rail{stroke:#16233a;stroke-width:1.5;fill:none}
+  .railfill{stroke:#22d3ee;stroke-width:1.5;fill:none;filter:url(#glow);
+            stroke-dasharray:100 100;stroke-dashoffset:100;animation:draw 6s linear infinite}
+  @keyframes draw{0%{stroke-dashoffset:100;opacity:1}45%{stroke-dashoffset:0}72%{stroke-dashoffset:0;opacity:1}80%{opacity:0}100%{stroke-dashoffset:0;opacity:0}}
+
+  .tile path{fill:none;stroke:#243447;stroke-width:1.3;animation-delay:var(--d,0s)}
+  .tile .lh{animation:seaml 6s linear infinite}
+  .tile .rh{animation:seamr 6s linear infinite}
+  @keyframes seaml{0%{stroke:#243447}4%{stroke:#22d3ee}72%{stroke:#22d3ee}80%{stroke:#243447}100%{stroke:#243447}}
+  @keyframes seamr{0%{stroke:#243447;transform:translateX(6px)}4%{stroke:#22d3ee;transform:translateX(0)}72%{stroke:#22d3ee;transform:translateX(0)}80%{stroke:#243447;transform:translateX(6px)}100%{stroke:#243447;transform:translateX(6px)}}
+
+  .nm{fill:#5b6b80;font-size:12.5px;letter-spacing:1.6px;animation:nml 6s linear infinite;animation-delay:var(--d,0s)}
+  @keyframes nml{0%{fill:#5b6b80}4%{fill:#dbe5f0}72%{fill:#dbe5f0}80%{fill:#5b6b80}100%{fill:#5b6b80}}
+  .as{fill:#4b5c72;font-size:9.5px;letter-spacing:.2px}
+  .st{fill:#22d3ee;font-size:8.5px;letter-spacing:1.6px;opacity:0;animation:sto 6s linear infinite;animation-delay:var(--d,0s)}
+  @keyframes sto{0%{opacity:0}4%{opacity:1}72%{opacity:1}80%{opacity:0}100%{opacity:0}}
+
+  .fin{fill:#080e18;stroke:#1c2b40;stroke-width:1;animation:finl 6s linear infinite;animation-delay:3s}
+  @keyframes finl{0%{stroke:#1c2b40;fill:#080e18}5%{stroke:#22d3ee;fill:#07141c}55%{stroke:#22d3ee;fill:#07141c}65%{stroke:#1c2b40;fill:#080e18}100%{stroke:#1c2b40;fill:#080e18}}
+  @media (prefers-reduced-motion:reduce){
+    .railfill{animation:none;stroke-dashoffset:0}
+    .tile .lh,.tile .rh{animation:none;stroke:#22d3ee;transform:none}
+    .nm{animation:none;fill:#dbe5f0}
+    .st{animation:none;opacity:1}
+    .fin{animation:none;stroke:#22d3ee;fill:#07141c}
+  }
+</style>
+<rect width="880" height="648" fill="url(#vig)"/>
+<rect width="880" height="648" fill="url(#grid)"/>
+
+<text class="eyebrow" x="40" y="34">TEN GATES  ·  EVERY SEAM MUST CLOSE  ·  ANY FAILURE STOPS THE FETCH</text>
+
+<line class="rail" x1="60" y1="66" x2="60" y2="498"/>
+<path class="railfill" pathLength="100" d="M60,66 V498"/>
+
+<g class="tile" style="--d:0.00s" transform="translate(54,59)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="70">V1</text><text class="nm" style="--d:0.00s" x="124" y="70">PIN</text>
+<text class="as" x="330" y="70">Local pin resolves the publisher name to a trusted root fingerprint.</text>
+<text class="st" style="--d:0.00s" x="840" y="70" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:0.28s" transform="translate(54,107)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="118">V2</text><text class="nm" style="--d:0.28s" x="124" y="118">ROOT CHAIN</text>
+<text class="as" x="330" y="118">Every root document from the pin to the newest validates its threshold and cross-signatures.</text>
+<text class="st" style="--d:0.28s" x="840" y="118" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:0.56s" transform="translate(54,155)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="166">V3</text><text class="nm" style="--d:0.56s" x="124" y="166">REVOCATIONS</text>
+<text class="as" x="330" y="166">Key does not appear in any revocation the root chain has signed.</text>
+<text class="st" style="--d:0.56s" x="840" y="166" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:0.84s" transform="translate(54,203)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="214">V4</text><text class="nm" style="--d:0.84s" x="124" y="214">TIMESTAMP</text>
+<text class="as" x="330" y="214">Signed timestamp falls inside the freshness window.</text>
+<text class="st" style="--d:0.84s" x="840" y="214" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:1.12s" transform="translate(54,251)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="262">V5</text><text class="nm" style="--d:1.12s" x="124" y="262">SNAPSHOT</text>
+<text class="as" x="330" y="262">Snapshot bytes hash to the digest the signed timestamp names.</text>
+<text class="st" style="--d:1.12s" x="840" y="262" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:1.40s" transform="translate(54,299)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="310">V6</text><text class="nm" style="--d:1.40s" x="124" y="310">MANIFEST</text>
+<text class="as" x="330" y="310">DSSE envelope verifies against the release key, name and version match.</text>
+<text class="st" style="--d:1.40s" x="840" y="310" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:1.68s" transform="translate(54,347)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="358">V7</text><text class="nm" style="--d:1.68s" x="124" y="358">TRANSPARENCY</text>
+<text class="as" x="330" y="358">Manifest is proven included in the public log, no equivocation.</text>
+<text class="st" style="--d:1.68s" x="840" y="358" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:1.96s" transform="translate(54,395)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="406">V8</text><text class="nm" style="--d:1.96s" x="124" y="406">CHUNK DIGESTS</text>
+<text class="as" x="330" y="406">Every received chunk hashes to the digest the manifest declares.</text>
+<text class="st" style="--d:1.96s" x="840" y="406" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:2.24s" transform="translate(54,443)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="454">V9</text><text class="nm" style="--d:2.24s" x="124" y="454">ASSEMBLY</text>
+<text class="as" x="330" y="454">Reassembled file and artifact digests reproduce the signed manifest exactly.</text>
+<text class="st" style="--d:2.24s" x="840" y="454" text-anchor="end">SEAM CLOSED</text>
+
+<g class="tile" style="--d:2.52s" transform="translate(54,491)"><path class="lh" d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/><path class="rh" d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/></g>
+<text class="vn" x="90" y="502">V10</text><text class="nm" style="--d:2.52s" x="124" y="502">PROVENANCE</text>
+<text class="as" x="330" y="502">Attestation links the artifact to a declared origin and lineage.</text>
+<text class="st" style="--d:2.52s" x="840" y="502" text-anchor="end">SEAM CLOSED</text>
+
+<path class="rail" d="M60,510 V545 Q60,555 70,555 H100"/>
+
+<rect class="fin" x="100" y="534" width="220" height="42"/>
+<text x="210" y="554" text-anchor="middle" fill="#dbe5f0" font-size="12" letter-spacing="2.4px">MATERIALIZE</text>
+<text x="210" y="567" text-anchor="middle" fill="#5b6b80" font-size="8.5px" letter-spacing="1.4px">BYTES HIT DISK ONLY HERE</text>
+
+<text x="840" y="624" text-anchor="end" fill="#33465e" font-size="9px" letter-spacing="1.3px">NOTHING IS WRITTEN BEFORE V10 CLEARS</text>
+</svg>

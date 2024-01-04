@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 880 224" width="880" height="224" role="img" aria-label="Threat model. Tampered chunk: rejected, prevented. Rollback attack: rejected, prevented. Split view: detected, surfaced but not prevented. Revoked key: fails closed, prevented. Eclipse attack: recovered, surfaced but not prevented.">
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#0d1523" stroke-width="1"/>
+  </pattern>
+  <radialGradient id="vig" cx="50%" cy="40%" r="85%">
+    <stop offset="0" stop-color="#0a1220"/><stop offset="1" stop-color="#04060b"/>
+  </radialGradient>
+  <filter id="glow" x="-120%" y="-120%" width="340%" height="340%">
+    <feGaussianBlur stdDeviation="1.6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <g id="nofit" fill="none" stroke-width="1.4">
+    <path d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/>
+    <path transform="translate(5,0)" d="M7,0 L10,3.5 L6,7 L10,10.5 L7,14 H12 V0 Z"/>
+  </g>
+  <g id="fit" fill="none" stroke-width="1.4">
+    <path d="M0,0 H7 L4,3.5 L8,7 L4,10.5 L7,14 H0 Z"/>
+    <path d="M7,0 L4,3.5 L8,7 L4,10.5 L7,14 H12 V0 Z"/>
+  </g>
+</defs>
+<style>
+  text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .card{fill:#080e18;stroke:#1c2b40;stroke-width:1}
+  .thr{fill:#ff3b1f;font-size:9px;letter-spacing:1.3px}
+  .prev{fill:#22d3ee;font-size:12px;letter-spacing:1.8px}
+  .surf{fill:#ffc531;font-size:12px;letter-spacing:1.8px}
+  .mech{fill:#4b5c72;font-size:7.5px;letter-spacing:1.1px}
+  .div{stroke:#141f30;stroke-width:1}
+  .eyebrow{fill:#22d3ee;font-size:8.5px;letter-spacing:3.2px}
+  .leg{fill:#4b5c72;font-size:7.5px;letter-spacing:1.4px}
+</style>
+<rect width="880" height="224" fill="url(#vig)"/>
+<rect width="880" height="224" fill="url(#grid)"/>
+<text class="eyebrow" x="24" y="24">EVERY MITIGATION HAS A TEST THAT TRIES TO DEFEAT IT</text>
+
+<g>
+  <rect class="card" x="24" y="38" width="156" height="130"/>
+  <rect x="24" y="38" width="156" height="2" fill="#ff3b1f" opacity=".5"/>
+  <use href="#nofit" xlink:href="#nofit" x="40" y="56" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text class="thr" x="40" y="90">TAMPERED CHUNK</text>
+  <line class="div" x1="40" y1="104" x2="164" y2="104"/>
+  <text class="prev" x="40" y="130">REJECTED</text>
+  <text class="mech" x="40" y="152">DIGEST MISMATCH</text>
+</g>
+
+<g>
+  <rect class="card" x="193" y="38" width="156" height="130"/>
+  <rect x="193" y="38" width="156" height="2" fill="#ff3b1f" opacity=".5"/>
+  <use href="#nofit" xlink:href="#nofit" x="209" y="56" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text class="thr" x="209" y="90">ROLLBACK ATTACK</text>
+  <line class="div" x1="209" y1="104" x2="333" y2="104"/>
+  <text class="prev" x="209" y="130">REJECTED</text>
+  <text class="mech" x="209" y="152">SNAPSHOT VERSION</text>
+</g>
+
+<g>
+  <rect class="card" x="362" y="38" width="156" height="130"/>
+  <rect x="362" y="38" width="156" height="2" fill="#ff3b1f" opacity=".5"/>
+  <use href="#nofit" xlink:href="#nofit" x="378" y="56" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text class="thr" x="378" y="90">SPLIT VIEW</text>
+  <line class="div" x1="378" y1="104" x2="502" y2="104"/>
+  <text class="surf" x="378" y="130">DETECTED</text>
+  <text class="mech" x="378" y="152">INCLUSION PROOF</text>
+</g>
+
+<g>
+  <rect class="card" x="531" y="38" width="156" height="130"/>
+  <rect x="531" y="38" width="156" height="2" fill="#ff3b1f" opacity=".5"/>
+  <use href="#nofit" xlink:href="#nofit" x="547" y="56" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text class="thr" x="547" y="90">REVOKED KEY</text>
+  <line class="div" x1="547" y1="104" x2="671" y2="104"/>
+  <text class="prev" x="547" y="130">FAIL CLOSED</text>
+  <text class="mech" x="547" y="152">REVOCATION SET</text>
+</g>
+
+<g>
+  <rect class="card" x="700" y="38" width="156" height="130"/>
+  <rect x="700" y="38" width="156" height="2" fill="#ff3b1f" opacity=".5"/>
+  <use href="#nofit" xlink:href="#nofit" x="716" y="56" stroke="#ff3b1f" filter="url(#glow)"/>
+  <text class="thr" x="716" y="90">ECLIPSE ATTACK</text>
+  <line class="div" x1="716" y1="104" x2="840" y2="104"/>
+  <text class="surf" x="716" y="130">RECOVERED</text>
+  <text class="mech" x="716" y="152">INDEPENDENT PATHS</text>
+</g>
+
+<line class="div" x1="24" y1="186" x2="856" y2="186"/>
+<use href="#fit" xlink:href="#fit" x="24" y="196" stroke="#22d3ee"/>
+<text class="leg" x="46" y="207">PREVENTED  ·  THE ATTACK CANNOT SUCCEED</text>
+<use href="#fit" xlink:href="#fit" x="330" y="196" stroke="#ffc531"/>
+<text class="leg" x="352" y="207">SURFACED  ·  THE ATTACK IS VISIBLE, NOT IMPOSSIBLE</text>
+<use href="#nofit" xlink:href="#nofit" x="700" y="196" stroke="#ff3b1f"/>
+<text class="leg" x="726" y="207">SEAM MISMATCH  ·  WHAT AN ATTACKER BRINGS</text>
+</svg>
