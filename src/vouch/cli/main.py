@@ -10,6 +10,7 @@ from __future__ import annotations
 import click
 
 from .diff import diff_command
+from .doctor import doctor_command
 from .fetch import fetch_command
 from .keygen import keygen_command
 from .log import log_group
@@ -50,6 +51,7 @@ main.add_command(log_group)
 main.add_command(provenance_command)
 main.add_command(diff_command)
 main.add_command(status_command)
+main.add_command(doctor_command)
 
 
 if __name__ == "__main__":
