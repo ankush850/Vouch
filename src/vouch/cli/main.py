@@ -9,21 +9,28 @@ from __future__ import annotations
 
 import click
 
+from .completion import completion_command
 from .diff import diff_command
 from .doctor import doctor_command
 from .fetch import fetch_command
+from .hash_util import hash_command
+from .inspect import inspect_command
 from .keygen import keygen_command
+from .keys_export import keys_export_command
 from .log import log_group
 from .mirror import mirror_group
 from .origin import origin_group
 from .provenance import provenance_command
+from .prune import prune_command
 from .publish import publish_command
 from .publisher import publisher_group
 from .revoke import revoke_command
 from .rotate import rotate_command
 from .status import status_command
 from .trust import trust_group
+from .trust_bundle import trust_bundle_command
 from .verify import verify_command
+from .version import version_command
 
 
 @click.group()
@@ -52,6 +59,13 @@ main.add_command(provenance_command)
 main.add_command(diff_command)
 main.add_command(status_command)
 main.add_command(doctor_command)
+main.add_command(inspect_command)
+main.add_command(version_command)
+main.add_command(hash_command)
+main.add_command(keys_export_command)
+main.add_command(completion_command)
+main.add_command(prune_command)
+main.add_command(trust_bundle_command)
 
 
 if __name__ == "__main__":
