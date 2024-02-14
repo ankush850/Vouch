@@ -1,0 +1,27 @@
+name: Vouch Model Signing Pipeline
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  sign-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Vouch
+        run: pip install .
+
+      - name: Publish and Sign Artifact
+        env:
+          SIGNING_KEY: ${{ secrets.VOUCH_SIGNING_KEY }}
+        run: |
+          echo "$SIGNING_KEY" > /tmp/signer.sec
+          vouch publish --store /var/vouch/origin --artifact my-model --version ${{ github.ref_name }} ./weights/
